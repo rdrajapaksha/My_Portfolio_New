@@ -821,6 +821,7 @@ a:focus {
 /*******************************/
 /******** Portfolio CSS ********/
 /*******************************/
+
 .portfolio {
     position: relative;
     padding: 45px 0 15px 0;
@@ -924,6 +925,41 @@ a:focus {
     border-color: #387478;
 }
 
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .portfolio {
+        padding: 30px 0 10px 0;
+    }
+
+    .portfolio #portfolio-filter li {
+        margin: 2px;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .portfolio .portfolio-text {
+        height: auto;
+        margin: 10px 5px;
+        flex-direction: column; /* Stack text and button */
+    }
+
+    .portfolio .portfolio-text h3 {
+        font-size: 16px;
+        margin: 5px 0;
+        white-space: normal; /* Allow wrapping */
+    }
+
+    .portfolio .portfolio-text a.btn {
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+        padding: 0;
+    }
+
+    .portfolio .portfolio-item:hover img {
+        margin-left: 0; /* Prevent shifting on hover */
+    }
+}
 
 
 
