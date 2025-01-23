@@ -41,20 +41,45 @@
     
     
     // Smooth scrolling on the navbar links
+    // $(".navbar-nav a").on('click', function (event) {
+    //     if (this.hash !== "") {
+    //         event.preventDefault();
+            
+    //         $('html, body').animate({
+    //             scrollTop: $(this.hash).offset().top - 45
+    //         }, 1500, 'easeInOutExpo');
+            
+    //         if ($(this).parents('.navbar-nav').length) {
+    //             $('.navbar-nav .active').removeClass('active');
+    //             $(this).closest('a').addClass('active');
+    //         }
+    //     }
+    // });
     $(".navbar-nav a").on('click', function (event) {
         if (this.hash !== "") {
             event.preventDefault();
             
-            $('html, body').animate({
-                scrollTop: $(this.hash).offset().top - 45
-            }, 1500, 'easeInOutExpo');
+            // Check if the link is to the current page
+            const currentUrl = window.location.href.split('#')[0]; // Get the current URL without the hash
+            const targetUrl = $(this).prop('href'); // Get the href of the clicked link
             
-            if ($(this).parents('.navbar-nav').length) {
-                $('.navbar-nav .active').removeClass('active');
-                $(this).closest('a').addClass('active');
+            if (targetUrl.startsWith(currentUrl)) {
+                // Smooth scroll only if the link is within the current page
+                $('html, body').animate({
+                    scrollTop: $(this.hash).offset().top - 45
+                }, 1500, 'easeInOutExpo');
+    
+                if ($(this).parents('.navbar-nav').length) {
+                    $('.navbar-nav .active').removeClass('active');
+                    $(this).closest('a').addClass('active');
+                }
+            } else {
+                // If the link goes to another page, allow default action
+                window.location.href = targetUrl; // Navigate to the target URL
             }
         }
     });
+    
     
     
     // Typed Initiate
